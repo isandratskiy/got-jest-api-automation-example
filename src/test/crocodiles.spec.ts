@@ -7,7 +7,7 @@ describe('Crocodiles controller', () => {
 	let api: ApiClient;
 
 	beforeEach(async () => {
-		api = await ApiClient.unregistered(generateUser());
+		api = await ApiClient.authToken(await ApiClient.register(generateUser()));
 	});
 
 	test('can create crocodiles', async () => {
