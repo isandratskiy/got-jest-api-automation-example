@@ -1,28 +1,53 @@
 {
-	"name": "got-jest-api-automation-example",
-	"version": "0.1.2",
-	"license": "MIT",
-	"description": "api automation draft project with got.js library",
-	"scripts": {
-		"test": "jest --config jest.config.ts --maxWorkers=1",
-		"prettier": "prettier --write ."
-	},
-	"author": "isandratskyi",
-	"devDependencies": {
-		"@types/node": "15.6.1",
-		"@types/jest": "26.0.23",
-		"@types/faker": "5.5.5",
-		"@types/tough-cookie": "4.0.0",
-		"faker": "5.5.3",
-		"jest": "27.0.1",
-		"ts-jest": "27.0.1",
-		"ts-node": "9.1.1",
-		"got": "11.8.2",
-		"jest-spec-reporter": "1.0.17",
-		"allure-commandline": "2.13.8",
-		"prettier": "2.2.1",
-		"tslib": "2.2.0",
-		"tough-cookie": "4.0.0",
-		"typescript": "4.3.2"
-	}
+  "name": "got-jest-api-automation-example",
+  "version": "0.1.2",
+  "license": "MIT",
+  "description": "api automation draft project with got.js library",
+  "scripts": {
+    "test": "jest --maxWorkers=1",
+    "prettier": "prettier --write ."
+  },
+  "author": "isandratskyi",
+  "devDependencies": {
+    "@types/node": "15.6.1",
+    "@types/jest": "26.0.23",
+    "@types/faker": "5.5.5",
+    "@types/tough-cookie": "4.0.0",
+    "faker": "5.5.3",
+    "jest": "27.0.1",
+    "ts-jest": "27.0.1",
+    "ts-node": "9.1.1",
+    "got": "11.8.2",
+    "jest-spec-reporter": "1.0.17",
+    "allure-commandline": "2.13.8",
+    "prettier": "2.2.1",
+    "tslib": "2.2.0",
+    "tough-cookie": "4.0.0",
+    "typescript": "4.3.2"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
+  },
+  "jest": {
+    "verbose": true,
+    "rootDir": ".",
+    "testMatch": [
+      "<rootDir>src/test/**/*.spec.ts"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testTimeout": 120000,
+    "reporters": [
+      "jest-spec-reporter"
+    ]
+  }
 }
