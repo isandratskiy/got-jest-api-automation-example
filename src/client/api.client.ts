@@ -1,29 +1,36 @@
-import { UserController } from '../controller/user.controller';
-import { AuthController } from '../controller/auth.controller';
-import { User } from '../types/user.type';
-import { CrocodilesController } from '../controller/crocodiles.controller';
+import { UserController } from '../controller/user.controller'
+import { AuthController } from '../controller/auth.controller'
+import { User } from '../types/user.type'
+import { CrocodilesController } from '../controller/crocodiles.controller'
+import { ControllerOptions } from '../controller/base.controller'
 
 export class ApiClient {
-	public readonly user: UserController;
-	public readonly auth: AuthController;
-	public readonly crocodile: CrocodilesController;
+  public readonly user: UserController
+  public readonly auth: AuthController
+  public readonly crocodile: CrocodilesController
 
-	private constructor(token?: string) {
-		const headers = {
-			...(token ? { Authorization: `Bearer ${token}` } : {})
-		};
+  constructor(params?: ControllerOptions) {
+    this.user = new UserController(params)
+    this.auth = new AuthController(params)
+    this.crocodile = new CrocodilesController(params)
+  }
 
-		this.user = new UserController(headers);
-		this.auth = new AuthController(headers);
-		this.crocodile = new CrocodilesController(headers);
-	}
+  static async authToken(user: User) {
+    return new ApiClient({
+      headers: await new ApiClient().auth.tokenLogin(user)
+    })
+  }
 
-	static async unauthorized(user: User) {
-		return new ApiClient(await new ApiClient().auth.login(user));
-	}
+  static async authCookies(user: User) {
+    return new ApiClient({
+      cookies: await new ApiClient().auth.cookiesLogin(user)
+    })
+  }
 
-	static async unregistered(user: User) {
-		await new ApiClient().user.register(user);
-		return await ApiClient.unauthorized(user);
-	}
+  static async register(user: User) {
+    return {
+      ...user,
+      ...(await new ApiClient().user.register(user))
+    }
+  }
 }
