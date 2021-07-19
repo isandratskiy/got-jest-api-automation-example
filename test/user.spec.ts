@@ -1,6 +1,6 @@
-import { generateUser } from '../types/user.generator'
-import { ApiClient } from '../client/api.client'
-import { User } from '../types/user.type'
+import { generateUser } from '../src/types/user.generator'
+import { ApiClient } from '../src/client/api.client'
+import { User } from '../src/types/user.type'
 
 describe('User controller', () => {
   let api: ApiClient

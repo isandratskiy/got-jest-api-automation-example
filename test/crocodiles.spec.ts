@@ -1,5 +1,5 @@
-import { ApiClient } from '../client/api.client'
-import { generateUser } from '../types/user.generator'
+import { ApiClient } from '../src/client/api.client'
+import { generateUser } from '../src/types/user.generator'
 import * as fake from 'faker'
 import { strict as assert } from 'assert'
 
