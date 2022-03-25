@@ -12,12 +12,12 @@ export class CrocodilesController extends BaseController {
     ).body
   }
 
-  async getCrocodiles() {
+  async fetchCrocodiles() {
     return (
       await this.request()
         .url('https://test-api.k6.io/my/crocodiles/')
         .method('GET')
-        .got()
+        .got<Crocodile[]>()
     ).body
   }
 }

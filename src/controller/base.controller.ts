@@ -14,9 +14,7 @@ export class BaseController {
 
   constructor(options?: ControllerOptions) {
     this.options = {
-      ...{
-        cookies: new CookieJar()
-      },
+      ...{ cookies: new CookieJar() },
       ...options
     }
   }

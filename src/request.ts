@@ -3,18 +3,17 @@ import got, { Method, Response } from 'got'
 import { CookieJar } from 'tough-cookie'
 
 export class Request {
-  static to(): Request {
-    return new Request()
-  }
-
   private options: OptionsOfJSONResponseBody = {
     responseType: 'json'
   }
-
   private cookieJar: CookieJar
 
   private constructor() {
     this.cookieJar = new CookieJar()
+  }
+
+  static to(): Request {
+    return new Request()
   }
 
   headers(headers: Record<string, string | undefined>): this {

@@ -6,7 +6,7 @@ export interface User {
   password: string
 }
 
-export interface AuthRequest {
+export interface Credentials {
   username: string
   password: string
 }
